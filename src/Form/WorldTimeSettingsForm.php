@@ -81,14 +81,14 @@ class WorldTimeSettingsForm extends ConfigFormBase {
       '#type' => 'textfield',
       '#title' => $this->t('Country'),
       '#description' => $this->t('Please enter the country name.'),
-      '#default_value' => $config->get('tz_country') ? $config->get('tz_country') : 'USA',
+      '#default_value' => $config->get('tz_country') ? $config->get('tz_country') : 'India',
     ];
 
     $form['tz_city'] = [
       '#type' => 'textfield',
       '#title' => $this->t('City'),
       '#description' => $this->t('Please enter the city name.'),
-      '#default_value' => $config->get('tz_city') ? $config->get('tz_city') : 'New York',
+      '#default_value' => $config->get('tz_city') ? $config->get('tz_city') : 'Kolkata',
     ];
 
     $form['tz_timezone'] = [
@@ -105,7 +105,7 @@ class WorldTimeSettingsForm extends ConfigFormBase {
         'Europe/Oslo' => 'Europe/Oslo',
         'Europe/London' => 'Europe/London',
       ],
-      '#default_value' => $config->get('tz_timezone') ? $config->get('tz_timezone') : 'America/New_York',
+      '#default_value' => $config->get('tz_timezone') ? $config->get('tz_timezone') : 'Asia/Kolkata',
     ];
 
     return parent::buildForm($form, $form_state);
