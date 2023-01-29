@@ -10,8 +10,8 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Datetime\DrupalDateTime;
 
 /**
- * CurrentTime Block
- * 
+ * CurrentTime Block.
+ *
  * @Block(
  *   id = "world_time",
  *   admin_label = @Translation("World Time Block"),
@@ -21,12 +21,14 @@ class WorldTimeBlock extends BlockBase implements ContainerFactoryPluginInterfac
 
   /**
    * The config factory service.
-   * 
+   *
    * @var Drupal\Core\Config\ConfigFactoryInterface
    */
   protected $config;
 
   /**
+   * The world time service.
+   *
    * @var \Drupal\worldtime\WorldTime
    */
   protected $getTime;
@@ -35,10 +37,15 @@ class WorldTimeBlock extends BlockBase implements ContainerFactoryPluginInterfac
    * Constructs CurrentTimeBlock Object.
    *
    * @param array $configuration
-   * @param $plugin_id
-   * @param $plugin_definition
-   * @param ConfigFactoryInterface $configFactory
-   * @param WorldTime $getTime
+   *   A configuration array containing information about the plugin instance.
+   * @param string $plugin_id
+   *   The plugin_id for the plugin instance.
+   * @param mixed $plugin_definition
+   *   The plugin implementation definition.
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
+   *   The config factory service.
+   * @param \Drupal\worldtime\WorldTime $getTime
+   *   The world time service.
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigFactoryInterface $configFactory, WorldTime $getTime) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
@@ -62,8 +69,7 @@ class WorldTimeBlock extends BlockBase implements ContainerFactoryPluginInterfac
   /**
    * {@inheritDoc}
    */
-  public function build()
-  {
+  public function build() {
     $getCurrentTime = DrupalDateTime::createFromFormat('dS M Y - h:i A', $this->getTime->getTimeFromTz());
     $renderable = [
       '#theme' => 'world_time',

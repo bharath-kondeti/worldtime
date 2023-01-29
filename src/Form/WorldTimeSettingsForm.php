@@ -12,8 +12,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Configure timezone settings in this form.
  */
-class WorldTimeSettingsForm extends ConfigFormBase
-{
+class WorldTimeSettingsForm extends ConfigFormBase {
   /**
    * The messenger service.
    *
@@ -29,19 +28,16 @@ class WorldTimeSettingsForm extends ConfigFormBase
   protected $cacheTagsInvalidator;
 
   /**
-   * Constructs the TzSettingsForm object
-   * 
+   * Constructs the TzSettingsForm object.
+   *
    * @param \Drupal\Core\Config\ConfigFactory $config_factory
    *   The config factory.
-   * 
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   The messenger service.
-   * 
    * @param \Drupal\Core\Cache\CacheTagsInvalidatorInterface $cacheTagsInvalidator
    *   The cache tags invalidator.
    */
-  public function __construct(ConfigFactory $config_factory, MessengerInterface $messenger, CacheTagsInvalidatorInterface $cacheTagsInvalidator)
-  {
+  public function __construct(ConfigFactory $config_factory, MessengerInterface $messenger, CacheTagsInvalidatorInterface $cacheTagsInvalidator) {
     parent::__construct($config_factory);
     $this->messenger = $messenger;
     $this->cacheTagsInvalidator = $cacheTagsInvalidator;
@@ -50,8 +46,7 @@ class WorldTimeSettingsForm extends ConfigFormBase
   /**
    * {@inheritDoc}
    */
-  public static function create(ContainerInterface $container)
-  {
+  public static function create(ContainerInterface $container) {
     return new static(
       $container->get('config.factory'),
       $container->get('messenger'),
@@ -62,26 +57,23 @@ class WorldTimeSettingsForm extends ConfigFormBase
   /**
    * {@inheritDoc}
    */
-  protected function getEditableConfigNames()
-  {
+  protected function getEditableConfigNames() {
     return [
-      'worldtime.settings'
+      'worldtime.settings',
     ];
   }
 
   /**
    * {@inheritDoc}
    */
-  public function getFormId()
-  {
+  public function getFormId() {
     return 'worldtime_settings_form';
   }
 
   /**
    * {@inheritDoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state)
-  {
+  public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('worldtime.settings');
     $form['tz_country'] = [
       '#type' => 'textfield',
@@ -120,8 +112,7 @@ class WorldTimeSettingsForm extends ConfigFormBase
   /**
    * {@inheritDoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state)
-  {
+  public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->config('worldtime.settings')
       ->set('tz_country', strip_tags($form_state->getValue('tz_country')))
       ->set('tz_city', strip_tags($form_state->getValue('tz_city')))
@@ -131,4 +122,5 @@ class WorldTimeSettingsForm extends ConfigFormBase
     $this->cacheTagsInvalidator->invalidateTags(['world_time_block']);
     $this->messenger->addStatus($this->t('The settings have been updated.'));
   }
+
 }
