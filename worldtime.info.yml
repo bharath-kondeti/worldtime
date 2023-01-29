@@ -1,0 +1,4 @@
+name: World Time
+type: module
+description: The module for getting time based on timezone settings. The module also provides a block.
+core_version_requirement: ^9 || ^10
