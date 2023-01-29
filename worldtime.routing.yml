@@ -1,0 +1,7 @@
+worldtime.timezone_config_form:
+  path: '/admin/config/regional/worldtime-settings'
+  defaults:
+    _form: '\Drupal\worldtime\Form\WorldTimeSettingsForm'
+    _title: 'Timezone Settings'
+  requirements:
+    _permission: 'administer site configuration'
