@@ -1,0 +1,5 @@
+worldtime.timezone_config_form:
+  title: 'WorldTime Settings'
+  description: 'Configure timezone settings for current time block.'
+  route_name: worldtime.timezone_config_form
+  parent: system.admin_config_regional
