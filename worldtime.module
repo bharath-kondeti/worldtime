@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function worldtime_theme($existing, $type, $theme, $path) {
+  return [
+    'world_time' => [
+      'variables' => [
+        'tz_country' => NULL,
+        'tz_city' => NULL,
+        'tz_time' => NULL,
+      ]
+    ],
+  ];
+}

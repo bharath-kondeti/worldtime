@@ -1,0 +1,11 @@
+<div class="time-block">
+	<div class="time">
+    {{ tz_time|date("H:i a") }}
+  </div>
+	<div class="date">
+    {{ tz_time|date("l, d  F Y") }}
+  </div>
+	<div class="location">
+		{{ 'Time in @tz_city, @tz_country'|t({'@tz_city': tz_city, '@tz_country': tz_country}) }}
+	</div>
+</div>
