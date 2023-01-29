@@ -13,7 +13,7 @@ class WorldTime {
 
   /**
    * The config factory service.
-   * 
+   *
    * @var \Drupal\Core\Config\Config
    */
   protected $config;
@@ -34,9 +34,13 @@ class WorldTime {
 
   /**
    * Construts GetTimeFromTz service.
-   * 
+   *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
    *   The config factory.
+   * @param \Drupal\Core\Datetime\DateFormatterInterface $dateFormatter
+   *   The date formatter service.
+   * @param \Drupal\Component\Datetime\TimeInterface $time
+   *   The time service.
    */
   public function __construct(ConfigFactoryInterface $configFactory, DateFormatterInterface $dateFormatter, TimeInterface $time) {
     $this->config = $configFactory->get('worldtime.settings');
@@ -45,10 +49,13 @@ class WorldTime {
   }
 
   /**
+   * Returns the date string in the requested format.
+   *
    * @return string
    *   A date string with requested format.
    */
   public function getTimeFromTz() {
     return $this->dateFormatter->format($this->time->getCurrentTime(), 'custom', 'dS M Y - h:i A', $this->config->get('tz_timezone'));
   }
+
 }
