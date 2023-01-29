@@ -1,0 +1,4 @@
+services:
+  worldtime.get_time:
+    class: Drupal\worldtime\WorldTime
+    arguments: ['@config.factory', '@date.formatter', '@datetime.time']
