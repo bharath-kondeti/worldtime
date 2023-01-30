@@ -76,6 +76,7 @@ class WorldTimeBlock extends BlockBase implements ContainerFactoryPluginInterfac
       '#cache' => [
         'contexts' => ['url', 'user'],
         'tags' => ['world_time_block'],
+        'max-age' => 0,
       ],
       '#tz_country' => $this->config->get('tz_country'),
       '#tz_city' => $this->config->get('tz_city'),
@@ -88,13 +89,6 @@ class WorldTimeBlock extends BlockBase implements ContainerFactoryPluginInterfac
     ];
 
     return $renderable;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  public function getCacheMaxAge() {
-    return 10;
   }
 
 }
